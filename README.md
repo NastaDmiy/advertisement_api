@@ -46,23 +46,35 @@ POST /advertisements — создать объявление
 
 ```
 
-Ответ: 201 Created + объект объявления
+Ответ:
+
+201 Created + объект объявления
 
 ## GET /advertisements/{id} — получить объявление по ID
 
-Ответ: 200 OK + объект объявления
+Ответ:
 
-Пример: GET /advertisements/1
+200 OK + объект объявления
+
+Пример:
+
+GET /advertisements/1
 
 ## GET /advertisements — получить все объявления
 
-Ответ: 200 OK + список всех объявлений
+Ответ:
+
+200 OK + список всех объявлений
 
 ## DELETE /advertisements/{id} — удалить объявление
 
-Ответ: 200 OK + сообщение об успешном удалении
+Ответ:
 
-Пример: DELETE /advertisements/1
+200 OK + сообщение об успешном удалении
+
+Пример:
+
+DELETE /advertisements/1
 
 
 ## Примеры запросов (curl)
@@ -70,6 +82,7 @@ POST /advertisements — создать объявление
 Создание объявления:
 
 ```bash
+
 curl -X POST http://127.0.0.1:5000/advertisements \
   -H "Content-Type: application/json" \
   -d "{\"title\":\"Продам квартиру\",\"description\":\"3-комнатная\",\"owner\":\"Иван\"}"
@@ -78,23 +91,24 @@ curl -X POST http://127.0.0.1:5000/advertisements \
 
 ## Получение всех объявлений:
 
-Ответ: 200 OK + сообщение об успешном удалении
-
-Пример: DELETE /advertisements/1
-
-Получение всех объявлений:
-
 ```bash
+
 curl http://127.0.0.1:5000/advertisements
+
 ```
-Получение объявления по ID:
+
+## Получение объявления по ID:
 
 ```bash
+
 curl http://127.0.0.1:5000/advertisements/1
+
 ```
 
-Удаление объявления:
+## Удаление объявления:
 
 ```bash
+
 curl -X DELETE http://127.0.0.1:5000/advertisements/1
+
 ```
