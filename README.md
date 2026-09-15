@@ -1,14 +1,8 @@
-\# Advertisement API
-
-
+# Advertisement API
 
 REST API для сайта объявлений на Flask.
 
-
-
-\## Стек технологий
-
-
+## Стек технологий
 
 \- Python 3
 
