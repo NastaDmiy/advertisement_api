@@ -63,3 +63,38 @@ POST /advertisements — создать объявление
 Ответ: 200 OK + сообщение об успешном удалении
 
 Пример: DELETE /advertisements/1
+
+
+## Примеры запросов (curl)
+
+Создание объявления:
+
+```bash
+curl -X POST http://127.0.0.1:5000/advertisements \
+  -H "Content-Type: application/json" \
+  -d "{\"title\":\"Продам квартиру\",\"description\":\"3-комнатная\",\"owner\":\"Иван\"}"
+
+```
+
+## Получение всех объявлений:
+
+Ответ: 200 OK + сообщение об успешном удалении
+
+Пример: DELETE /advertisements/1
+
+Получение всех объявлений:
+
+```bash
+curl http://127.0.0.1:5000/advertisements
+```
+Получение объявления по ID:
+
+```bash
+curl http://127.0.0.1:5000/advertisements/1
+```
+
+Удаление объявления:
+
+```bash
+curl -X DELETE http://127.0.0.1:5000/advertisements/1
+```
