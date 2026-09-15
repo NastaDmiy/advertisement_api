@@ -106,6 +106,39 @@ def get_all_advertisements():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
+@app.route('/advertisements/<int:ad_id>', methods=['PUT'])
+def update_advertisement(ad_id):
+    """
+    Редактирование объявления
+    Принимает JSON с полями: title, description, owner
+    Все поля опциональны — обновляются только переданные
+    """
+    try:
+        advertisement = Advertisement.query.get(ad_id)
+
+        if not advertisement:
+            return jsonify({'error': 'Advertisement not found'}), 404
+
+        data = request.get_json()
+
+        if not data:
+            return jsonify({'error': 'No data provided'}), 400
+
+        # Обновляем только переданные поля
+        if 'title' in data:
+            advertisement.title = data['title']
+        if 'description' in data:
+            advertisement.description = data['description']
+        if 'owner' in data:
+            advertisement.owner = data['owner']
+
+        db.session.commit()
+
+        return jsonify(advertisement.to_dict()), 200
+
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'error': str(e)}), 500
 
 @app.errorhandler(404)
 def not_found(error):
