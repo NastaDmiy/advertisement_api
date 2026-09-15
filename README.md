@@ -1,30 +1,114 @@
-\# Advertisement API
-
-
+# Advertisement API
 
 REST API для сайта объявлений на Flask.
 
+## Стек технологий
 
+- Python 3
 
-\## Стек технологий
+- Flask 2.3.3
 
+- Flask-SQLAlchemy 3.0.5
 
-
-\- Python 3
-
-\- Flask 2.3.3
-
-\- Flask-SQLAlchemy 3.0.5
-
-\- SQLite
+- SQLite
 
 
 
-\## Установка
-
-
+## Установка
 
 ```bash
 
 pip install -r requirements.txt
 
+```
+## Запуск
+
+```bash
+
+python app.py
+
+```
+
+## API методы
+
+POST /advertisements — создать объявление
+
+Тело запроса (JSON):
+
+
+```bash
+
+{
+  "title": "Продам квартиру",
+  "description": "3-комнатная квартира в центре",
+  "owner": "Иван Петров"
+}
+
+```
+
+Ответ:
+
+201 Created + объект объявления
+
+## GET /advertisements/{id} — получить объявление по ID
+
+Ответ:
+
+200 OK + объект объявления
+
+Пример:
+
+GET /advertisements/1
+
+## GET /advertisements — получить все объявления
+
+Ответ:
+
+200 OK + список всех объявлений
+
+## DELETE /advertisements/{id} — удалить объявление
+
+Ответ:
+
+200 OK + сообщение об успешном удалении
+
+Пример:
+
+DELETE /advertisements/1
+
+
+## Примеры запросов (curl)
+
+Создание объявления:
+
+```bash
+
+curl -X POST http://127.0.0.1:5000/advertisements \
+  -H "Content-Type: application/json" \
+  -d "{\"title\":\"Продам квартиру\",\"description\":\"3-комнатная\",\"owner\":\"Иван\"}"
+
+```
+
+## Получение всех объявлений:
+
+```bash
+
+curl http://127.0.0.1:5000/advertisements
+
+```
+
+## Получение объявления по ID:
+
+```bash
+
+curl http://127.0.0.1:5000/advertisements/1
+
+```
+
+## Удаление объявления:
+
+```bash
+
+curl -X DELETE http://127.0.0.1:5000/advertisements/1
+
+```
